@@ -8,3 +8,11 @@ y_max = float(input("Enter max y: "))
 
 x_values = []
 y_values = []
+
+x = x_min
+while x <= x_max:
+    x_values.append(x)
+    # Safely evaluate mathematical expression in x
+    y = eval(eq_input, {"x": x, "__builtins__": {}})
+    y_values.append(y)
+    x += 0.05
