@@ -16,3 +16,13 @@ while x <= x_max:
     y = eval(eq_input, {"x": x, "__builtins__": {}})
     y_values.append(y)
     x += 0.05
+
+plt.figure()
+plt.plot(x_values, y_values, label=f"y = {eq_input}")
+plt.xlim(x_min, x_max)
+plt.ylim(y_min, y_max)
+plt.xlabel("x")
+plt.ylabel("y")
+plt.grid(True)
+plt.legend()
+plt.show()
