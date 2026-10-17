@@ -30,3 +30,11 @@ while step_size > (target_tolerance / 10.0):
     else:
         # Peak bounded within current step size -> refine step size
         step_size /= 2.0
+    path_x.append(current_x)
+    path_y.append(f(current_x))
+
+best_x = current_x
+best_y = f(best_x)
+
+print(f"Optimal x approx: {best_x:.4f}")
+print(f"Maximum y approx: {best_y:.4f}")
