@@ -38,3 +38,17 @@ best_y = f(best_x)
 
 print(f"Optimal x approx: {best_x:.4f}")
 print(f"Maximum y approx: {best_y:.4f}")
+# Visualizing function curve and climbing trail
+x_range = [best_x - 30 + i * 0.1 for i in range(600)]
+y_range = [f(x) for x in x_range]
+
+plt.figure()
+plt.plot(x_range, y_range, label="Quadratic Curve", color='gray')
+plt.plot(path_x, path_y, 'ro-', label="Climber Path")
+plt.plot(best_x, best_y, 'g*', markersize=15, label=f"Peak ({best_x:.2f}, {best_y:.2f})")
+plt.title("Hill Climbing Peak Search")
+plt.xlabel("x")
+plt.ylabel("y")
+plt.legend()
+plt.grid(True)
+plt.show()
