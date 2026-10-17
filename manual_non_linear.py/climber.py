@@ -13,3 +13,20 @@ target_tolerance = 1.0 / (abs(a_coeff) ** 0.5)
 # Pick random start within [-1000, 1000]
 current_x = random.uniform(-1000, 1000)
 step_size = 10.0
+
+path_x = [current_x]
+path_y = [f(current_x)]
+
+# Hill climbing loop with variable step reduction
+while step_size > (target_tolerance / 10.0):
+    left_y = f(current_x - step_size)
+    right_y = f(current_x + step_size)
+    current_y = f(current_x)
+    
+    if right_y > current_y:
+        current_x += step_size
+    elif left_y > current_y:
+        current_x -= step_size
+    else:
+        # Peak bounded within current step size -> refine step size
+        step_size /= 2.0
