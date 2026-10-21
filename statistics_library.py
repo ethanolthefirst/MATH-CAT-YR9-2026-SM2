@@ -1,5 +1,15 @@
+def load_dataset(filename):
+    """Reads a text file containing numerical data (one value per line) into a list of floats."""
+    data = []
+    with open(filename, 'r') as f:
+        for line in f:
+            stripped = line.strip()
+            if stripped:  # Ignore empty lines
+                data.append(float(stripped))
+    return data
+
 def mean(data):
-    return sum(data) / len(data) if data else 0
+    return sum(data) / len(data)
 
 def minimum(data):
     min_val = data[0]
@@ -18,7 +28,7 @@ def maximum(data):
 def range_val(data):
     return maximum(data) - minimum(data)
 
-    def median(data):
+def median(data):
     sorted_data = sorted(data)
     n = len(sorted_data)
     mid = n // 2
@@ -31,7 +41,6 @@ def lower_quartile(data):
     sorted_data = sorted(data)
     n = len(sorted_data)
     mid = n // 2
-    # Use lower half of dataset
     lower_half = sorted_data[:mid]
     return median(lower_half)
 
@@ -39,7 +48,6 @@ def upper_quartile(data):
     sorted_data = sorted(data)
     n = len(sorted_data)
     mid = n // 2
-    # Use upper half of dataset
     if n % 2 == 0:
         upper_half = sorted_data[mid:]
     else:
@@ -51,7 +59,6 @@ def interquartile_range(data):
 
 def variance(data):
     m = mean(data)
-    # Population variance
     return sum((x - m) ** 2 for x in data) / len(data)
 
 def standard_deviation(data):
