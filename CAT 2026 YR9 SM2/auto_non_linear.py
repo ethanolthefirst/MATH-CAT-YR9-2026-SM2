@@ -1,4 +1,5 @@
 import csv
+from pathlib import Path
 import matplotlib.pyplot as plt
 
 def evaluate_circle(r, x_vals, y_vals, colors):
@@ -8,7 +9,7 @@ def evaluate_circle(r, x_vals, y_vals, colors):
 
 # Load dataset with robust parsing
 x_vals, y_vals, colors = [], [], []
-with open('non_linear_1.csv', 'r') as f:
+with (Path(__file__).resolve().parent / 'non_linear_1.csv').open('r') as f:
     for row in csv.reader(f):
         if row:
             x_vals.append(float(row[0]))

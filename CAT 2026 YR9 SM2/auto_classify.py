@@ -1,5 +1,6 @@
 import csv
 import random
+from pathlib import Path
 import matplotlib.pyplot as plt
 
 def evaluate_line(m, c, x_vals, y_vals, colors):
@@ -8,7 +9,7 @@ def evaluate_line(m, c, x_vals, y_vals, colors):
     return max(s1, s2) / len(x_vals) * 100.0
 
 x_vals, y_vals, colors = [], [], []
-with open('linear_1.csv', 'r') as f:
+with (Path(__file__).resolve().parent / 'linear_1.csv').open('r') as f:
     for row in csv.reader(f):
         if row:
             x_vals.append(float(row[0]))
