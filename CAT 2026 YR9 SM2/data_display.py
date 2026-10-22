@@ -1,10 +1,12 @@
 import csv
+from pathlib import Path
 import matplotlib.pyplot as plt
 from statistics_library import minimum, maximum
 
 x_vals, y_vals, colors = [], [], []
 
-with open('linear_1.csv', 'r') as f:
+data_file = Path(__file__).resolve().parent / 'linear_1.csv'
+with data_file.open('r', newline='') as f:
     reader = csv.reader(f)
     for row in reader:
         if row:
